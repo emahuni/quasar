@@ -67,18 +67,21 @@ setHorizontalScrollPosition (scrollTargetElement, offset[, duration])
 ```
 
 ### Scrolling to an element
-A full example using the scroll utils to scroll to an element:
+A full example using the scroll utils to scroll to an element using css selectors:
 
 ```js
 import { scroll } from 'quasar'
 const { getScrollTarget, setScrollPosition } = scroll
-// takes an element object
-function scrollToElement (el) {
-  const target = getScrollTarget(el)
-  const offset = el.offsetTop
-  const duration = 1000
-  setScrollPosition(target, offset, duration)
-}
+// takes 2 css selectors; the element you want to scroll to and the containing scroll target element
+function scrollToElement (elSelector, scrollTargetSelector) {
+    const el = document.querySelector(elSelector);
+    const containerEl = document.querySelector(scrollTargetSelector);
+
+    const target = getScrollTarget(containerEl);
+    const offset = el.offsetTop;
+    const duration = 1000;
+    setScrollPosition(target, offset, duration);
+  }
 ```
 
 ## Determine scroll size
